@@ -1,3 +1,4 @@
+import { getLegalResponse } from "../utils/legalHelper";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Scale, FileText, Brain, Search, Shield, MessageSquare, BarChart3, Clock, Globe, Gavel, ArrowRight, Sparkles } from "lucide-react";
