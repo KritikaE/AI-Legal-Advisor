@@ -16,7 +16,6 @@ type LegalResult = {
 const suggestions = [
   "Police arrested me without warrant",
   "Property dispute with neighbor",
-  "Tenant not vacating house",
   "Cyber fraud complaint",
 ];
 
