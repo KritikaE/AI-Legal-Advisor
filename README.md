@@ -1,69 +1,86 @@
-# ⚖️ AI Legal Argument Generator
+# ⚖️ Intelligent Legal Advisor
 
-An intelligent web-based application that leverages Artificial Intelligence to assist in generating structured legal arguments based on case descriptions, relevant laws, and precedents.
+A smart web-based application that analyzes legal case descriptions and provides structured insights including arguments, timelines, required documents, and similar cases.
 
 ---
 
 ## 📌 About the Project
 
-The **AI Legal Argument Generator** is designed to support legal professionals and students by automating the process of analyzing legal cases and generating well-structured arguments.
+The **Intelligent Legal Advisor** is a rule-based legal analysis system designed to help users understand legal situations in a structured and simplified way.
 
-By using Natural Language Processing (NLP) and AI-driven reasoning, the system interprets case descriptions and produces meaningful legal insights, reducing manual effort and improving efficiency.
+Instead of relying on heavy AI models, the system uses domain-specific logic and predefined legal knowledge to simulate intelligent reasoning and generate meaningful outputs.
+
+It is lightweight, explainable, and designed to be extended with real AI models in the future.
 
 ---
 
 ## 🎯 Use Case
 
-Legal argument construction is often:
+Legal analysis is often:
 
 * Time-consuming
-* Dependent on extensive research
-* Prone to human oversight
+* Difficult for non-experts
+* Dependent on structured understanding
 
 This system helps by:
 
-* Analyzing case facts
-* Identifying relevant legal principles
-* Generating structured legal arguments
+* Interpreting case descriptions
+* Mapping them to legal categories
+* Providing structured legal insights
 
-### Example:
+---
+
+### 🧪 Example
 
 **Input:**
-"Employee fired without notice after reporting corruption."
+Employee fired without notice after reporting corruption
 
 **Output:**
 
-* Applicable labor laws
-* Relevant legal precedents
-* Suggested legal arguments
+* Summary of the issue
+* Key legal arguments
+* Step-by-step timeline
+* Required documents
+* Similar legal cases
 
 ---
 
 ## 👥 Stakeholders
 
-* **Lawyers / Advocates**
-
-  * Generate arguments quickly for cases
 * **Law Students**
+  Learn legal reasoning and case structure
 
-  * Learn legal reasoning and argument structure
-* **Legal Researchers**
+* **General Users**
+  Understand legal situations without complexity
 
-  * Explore case law and precedents efficiently
 * **Legal Tech Developers**
-
-  * Build and extend intelligent legal systems
+  Extend the system with AI or advanced NLP
 
 ---
 
 ## 🚀 Features
 
-* 📄 Case Description Input
-* 🔍 AI-based Case Analysis
-* ⚖️ Legal Argument Generation
-* 📚 Structured Output for Easy Understanding
-* 💻 Interactive User Interface
-* 🧪 Testing Support (Playwright & Vitest)
+* 🧾 Case Description Input
+* ⚖️ Structured Legal Analysis
+* 📄 Legal Argument Generation
+* 🕒 Case Timeline Visualization
+* 📑 Document Guidance (with useful links)
+* 📚 Similar Case References
+* 💻 Clean and Interactive UI
+
+---
+
+## 🧠 System Design
+
+The application follows a **rule-based expert system approach**:
+
+User Input → Keyword Detection → Case Mapping → Structured Output
+
+### ✅ Benefits
+
+* Fast response
+* Predictable behavior
+* Easy to debug and extend
 
 ---
 
@@ -71,46 +88,30 @@ This system helps by:
 
 ### Frontend
 
-* **HTML5**
-* **TypeScript**
-* **Vite** (Fast build tool)
-* **Tailwind CSS** (Styling)
-* **PostCSS**
+* React (TypeScript)
+* Vite
+* Tailwind CSS
 
 ### Development & Tooling
 
-* **Node.js**
-* **ESLint** (Code linting)
-* **Bun / npm** (Package management)
+* Node.js
+* ESLint
+* npm / Bun
 
 ### Testing
 
-* **Playwright** (End-to-end testing)
-* **Vitest** (Unit testing)
-
-### Configuration & Build
-
-* **Vite Config**
-* **TypeScript Config**
-* **Tailwind Config**
+* Playwright
+* Vitest
 
 ---
 
 ## 📂 Project Structure
 
-```
-AI_Legal_Argumentor/
-│
-├── src/                  # Main application source code
-├── index.html           # Entry HTML file
-├── package.json         # Project dependencies
-├── vite.config.ts       # Vite configuration
-├── tailwind.config.ts   # Tailwind CSS configuration
-├── postcss.config.js    # PostCSS configuration
-├── playwright.config.ts # E2E testing setup
-├── vitest.config.ts     # Unit testing setup
-└── tsconfig*.json       # TypeScript configurations
-```
+src/
+├── pages/        # UI pages (Dashboard, Home)
+├── utils/        # Logic (legalHelper)
+├── data/         # Legal knowledge base
+├── components/   # UI components
 
 ---
 
@@ -118,56 +119,40 @@ AI_Legal_Argumentor/
 
 ### 1. Clone the Repository
 
-```bash
-git clone https://github.com/your-username/AI_Legal_Argumentor.git
-cd AI_Legal_Argumentor
-```
+git clone https://github.com/KritikaE/AI-Legal-Advisor.git
+cd AI-Legal-Advisor
 
 ### 2. Install Dependencies
 
-```bash
 npm install
-```
-
-or (if using bun)
-
-```bash
-bun install
-```
 
 ### 3. Run the Development Server
 
-```bash
 npm run dev
-```
-
-### 4. Build for Production
-
-```bash
-npm run build
-```
 
 ---
 
-## 🧪 Running Tests
+## 🧪 Testing
 
-### Run Unit Tests
-
-```bash
 npm run test
-```
-
-### Run End-to-End Tests
-
-```bash
 npx playwright test
-```
-
-## 💡 Acknowledgements
-
-* Legal datasets and open resources
-* P Rishika Chowdary, Kritika Enduri, Yashaswini Noole, Vidyasree Ejjagiri
 
 ---
 
-**Made with 💻 + ⚖️ to simplify legal reasoning using AI**
+## 🔮 Future Improvements
+
+* 🤖 Integration with AI models (OpenAI / Gemini / Ollama)
+* 🧠 Smarter intent detection
+* 📊 Case strength scoring
+* 📄 PDF report generation
+
+
+---
+
+## ⭐ Project Note
+
+This project demonstrates how structured logic and domain knowledge can simulate intelligent behavior, forming a strong foundation for future AI integration.
+
+---
+
+**Built to simplify legal understanding ⚖️**
