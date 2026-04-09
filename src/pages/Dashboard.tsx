@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { getLegalResponse } from "../utils/legalHelper";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,22 +15,35 @@ type LegalResult = {
 const suggestions = [
   "Police arrested me without warrant",
   "Property dispute with neighbor",
-  "Tenant not vacating house",
   "Cyber fraud complaint",
+  "Wrongful job termination",
 ];
 
 const Dashboard = () => {
+  const location = useLocation();
+
   const [input, setInput] = useState("");
   const [result, setResult] = useState<LegalResult | null>(null);
   const [loading, setLoading] = useState(false);
 
+  // 🔥 Auto-run from homepage
+  useEffect(() => {
+    if (location.state?.query) {
+      setInput(location.state.query);
+      handleAnalyzeAuto(location.state.query);
+    }
+  }, []);
+
   const handleAnalyze = () => {
     if (!input.trim()) return;
+    handleAnalyzeAuto(input);
+  };
 
+  const handleAnalyzeAuto = (query: string) => {
     setLoading(true);
 
     setTimeout(() => {
-      const res = getLegalResponse(input);
+      const res = getLegalResponse(query);
       setResult(res);
       setLoading(false);
     }, 500);
@@ -38,19 +52,17 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen p-8 bg-background">
 
-      {/* 🔥 HERO SECTION */}
-      <div className="text-center mb-12 animate-fade-in">
+      {/* 🔥 HERO INPUT */}
+      <div className="text-center mb-12">
 
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           Analyze Your Legal Case ⚖️
         </h1>
 
-        <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-          Get instant legal insights including arguments, timeline,
-          required documents, and relevant case references.
+        <p className="text-muted-foreground max-w-xl mx-auto mb-6">
+          AI-powered structured legal insights
         </p>
 
-        {/* Input Box */}
         <div className="max-w-2xl mx-auto flex gap-3 p-2 rounded-xl border bg-card shadow-lg hover:shadow-xl transition">
 
           <Input
@@ -60,21 +72,21 @@ const Dashboard = () => {
             className="border-none focus-visible:ring-0 text-base"
           />
 
-          <Button
-            onClick={handleAnalyze}
-            className="px-6 text-base font-semibold"
-          >
+          <Button onClick={handleAnalyze} className="px-6 font-semibold">
             Analyze Case ⚖️
           </Button>
 
         </div>
 
-        {/* Suggestions */}
+        {/* 🔥 Suggestions */}
         <div className="flex flex-wrap justify-center gap-2 mt-6">
           {suggestions.map((s, i) => (
             <button
               key={i}
-              onClick={() => setInput(s)}
+              onClick={() => {
+                setInput(s);
+                handleAnalyzeAuto(s);
+              }}
               className="px-3 py-1 text-sm rounded-full border bg-muted hover:bg-primary hover:text-white transition"
             >
               {s}
@@ -84,16 +96,23 @@ const Dashboard = () => {
 
       </div>
 
-      {/* Loading */}
+      {/* 🔥 Loading */}
       {loading && (
         <p className="text-center text-muted-foreground mb-6">
           Analyzing your case...
         </p>
       )}
 
-      {/* RESULTS */}
+      {/* 🔥 Empty state */}
+      {!result && !loading && (
+        <div className="text-center text-muted-foreground mt-20">
+          <p>Start by describing your legal issue above 👆</p>
+        </div>
+      )}
+
+      {/* 🔥 RESULTS */}
       {result && (
-        <div className="space-y-6 animate-fade-in">
+        <div className="space-y-6">
 
           {/* Top Row */}
           <div className="grid md:grid-cols-3 gap-6">
@@ -115,6 +134,7 @@ const Dashboard = () => {
                 ))}
               </ul>
             </div>
+
           </div>
 
           {/* 🔥 TIMELINE */}
